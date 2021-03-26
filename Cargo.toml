@@ -7,4 +7,4 @@ edition = "2018"
 [dependencies]
 anyhow = "~1.0.39"
 sqlx = { version = "~0.5.1", features = ["runtime-tokio-native-tls"] }
-tokio = { version = "~1.4.0", features = ["rt"] }
+tokio = { version = "~1.4.0", features = ["macros", "rt"] }
