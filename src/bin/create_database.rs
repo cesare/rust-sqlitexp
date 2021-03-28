@@ -1,7 +1,7 @@
 use std::str::FromStr;
 
 use anyhow::Result;
-use sqlx::{ConnectOptions, Executor};
+use sqlx::{Connection, ConnectOptions, Executor};
 use sqlx::sqlite::SqliteConnectOptions;
 use structopt::StructOpt;
 use tokio;
@@ -28,5 +28,7 @@ async fn main() -> Result<()> {
         );
     ");
     let _results = connection.execute(query).await?;
+    connection.close().await?;
+
     Ok(())
 }
