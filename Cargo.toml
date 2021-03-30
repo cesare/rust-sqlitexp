@@ -6,6 +6,8 @@ edition = "2018"
 
 [dependencies]
 anyhow = "~1.0.39"
+serde = "~1.0.125"
 sqlx = { version = "~0.5.1", features = ["runtime-tokio-native-tls", "sqlite"] }
 structopt = "~0.3.21"
 tokio = { version = "~1.4.0", features = ["macros", "rt"] }
+toml = "~0.5.8"
