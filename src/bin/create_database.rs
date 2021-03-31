@@ -24,7 +24,8 @@ async fn main() -> Result<()> {
         create table servants (
             id integer primary key,
             name text not null,
-            class_name text not null
+            class_name text not null,
+            created_at timestamp default (datetime(current_timestamp, 'localtime'))
         );
     ");
     let _results = connection.execute(query).await?;
