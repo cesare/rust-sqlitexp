@@ -18,6 +18,7 @@ struct Servant {
     id: i64,
     name: String,
     class_name: String,
+    created_at: chrono::NaiveDateTime,
 }
 
 #[tokio::main]
@@ -27,7 +28,7 @@ async fn main() -> Result<()> {
     let mut connection = SqliteConnectOptions::from_str(&options.url)?
         .create_if_missing(true)
         .connect().await?;
-    let query = sqlx::query_as::<_, Servant>("select id, name, class_name from servants");
+    let query = sqlx::query_as::<_, Servant>("select id, name, class_name, created_at from servants");
     let results = query.fetch_all(&mut connection).await?;
     for servant in results {
         println!("{:?}", servant);
